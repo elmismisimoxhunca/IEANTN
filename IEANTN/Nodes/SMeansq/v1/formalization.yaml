@@ -103,7 +103,7 @@ limitations:
   2026-10-10 (IntegrableOn of D^2 and |R| required). The future decomposition node must supply
   inputs satisfying these hypotheses; the solution needs no measurability fact about zetaS itself.
 - >-
-  INSTANTIATION STATUS (repaired 2026-10-10; sharp constants still uncertified): the referee's
+  INSTANTIATION STATUS (repaired 2026-10-10; kernel constants certified 2026-10-10): the referee's
   fatal issue 2 (off-line kernel Psi_a for zeros beyond the RH-verified height 3,000,175,332,800)
   and majors 3-4 (negative-zero distance, pole/trivial-zero pricing, H-domain) were repaired by an
   independent Astra pass: every remainder term is now a nonnegative additive allowance in r1
@@ -114,7 +114,12 @@ limitations:
   (L = 4.746, B = 3/2) gives a uniform-in-T bound 12.292 for H = 10^4 over the whole domain, so
   the n = 13 sawtooth retirement (needs < 169/12 = 14.0833) survives even without the
   certificates. Repair: campaign-results/F039-IEANTN/REPAIR/ (REPAIR.md, rerun.py, RESULTS.md);
-  headline numbers independently reproduced by the parent to 12 significant figures.
+  headline numbers independently reproduced by the parent to 12 significant figures. The two
+  kernel constants are now certified by rigorous interval arithmetic with proven analytic tails
+  (campaign-results/F039-IEANTN/CERT/): norm(Phi)_1 in [2.74687402574, 2.74687468434] <= 2.74688
+  and B in [1.32802243655788..., 1.32802243655788...] <= 1.32803, argmax tau in
+  [14.72899141975465946682, 14.72899141975465946683]; verifier rerun green by the parent. The
+  sharp-decimal headline is therefore unconditional end to end.
 - >-
   The three analytic inputs are hypotheses, not nodes: (1) the Selberg smoothed-formula
   decomposition pi * S t = -(D t) - (R t); (2) the Beurling-Selberg majorant diagonalization
