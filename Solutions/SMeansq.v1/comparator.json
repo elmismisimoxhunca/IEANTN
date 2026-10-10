@@ -1,0 +1,13 @@
+{
+  "challenge_module": "IEANTN.Nodes.SMeansq.v1.Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "SMeansq.v1.challenge_assembly"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

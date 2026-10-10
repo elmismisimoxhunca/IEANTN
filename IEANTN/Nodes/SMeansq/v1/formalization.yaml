@@ -41,10 +41,7 @@ conclusions:
   - id: solution
     kind: none-yet
     note: >-
-      Not yet proved in Lean. The proof is a Cauchy-Schwarz-plus-quadratic-formula argument on the
-      window integrals (pi u^2 <= u sqrt(d1 H) + Omega r1 H for u = sqrt of the left side); the
-      expected work is measurability/integrability plumbing for zetaS, D and R, not analysis.
-      Designated follow-ups will supply the hypotheses as nodes of their own.
+      Proved in Solutions/SMeansq.v1/, sorry-free, see solution README; comparator run pending.
   designated: solution
 
 sources:
