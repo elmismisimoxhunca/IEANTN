@@ -91,12 +91,30 @@ review:
   notes: >-
     Original research contributed from outside; no reviewer has yet checked the statement against
     the mathematics it models. The derivation's numerical table and its two independent
-    prosecutions are recorded in the campaign exhibit, not here.
+    prosecutions are recorded in the campaign exhibit, not here. A separate adversarial AI
+    refereeing pass (GPT 6 Astra, 2026-10-10) REJECTED the first draft of this statement: its
+    fatal issue 1 (vacuous moment hypotheses via Mathlib's totalization of nonintegrable
+    functions) was confirmed and repaired by requiring IntegrableOn of D^2 and |R|; its fatal
+    issue 2 concerns the campaign exhibit's instantiation, not this node's statement (see
+    limitations).
 
 limitations:
 - >-
-  No Lean proof yet: the conclusion is a challenge awaiting a solution. The expected proof is
-  elementary (Cauchy-Schwarz and the quadratic formula); the plumbing is measurability of zetaS.
+  No Lean proof yet: the conclusion is a challenge awaiting a solution. The proof is
+  Cauchy-Schwarz plus the quadratic formula; the required inputs (measurability of zetaS,
+  integrability of the windows' D^2 and |R|) are exactly what the future decomposition node must
+  supply. The first draft's claim that the proof was "plumbing" was wrong: without the
+  integrability hypotheses the statement was false (vacuous moment premises), repaired 2026-10-10.
+- >-
+  INSTANTIATION GAP (referee fatal issue 2, open): the campaign exhibit's unconditional
+  instantiation applies the critical-line kernel Phi to ALL far zeros, but zeros beyond the
+  RH-verified height (3,000,175,332,800 per Platt-Trudgian) may sit off the line, where the
+  integrated kernel is Psi_a with a beta-dependent coefficient (crude universal bound
+  (sqrt x + x/2)/tau^2 instead of B/tau^2, about 31x larger at x = 67). The exhibit's headline
+  table reproduces independently to ~1e-4 relative (referee recomputation), but the unconditional
+  upper-bound proof is incomplete until the off-line tail is priced and re-run. Repair path is
+  identified; until then the instantiation is NOT certified and this node asserts only the
+  conditional assembly.
 - >-
   The three analytic inputs are hypotheses, not nodes: (1) the Selberg smoothed-formula
   decomposition pi * S t = -(D t) - (R t); (2) the Beurling-Selberg majorant diagonalization
