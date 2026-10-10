@@ -62,6 +62,8 @@ import IEANTN.Nodes.PrimeInterval.v1.Examples
 import IEANTN.Nodes.RamareSaouter2003.v1.Challenge
 import IEANTN.Nodes.Richstein2001.v1.Challenge
 import IEANTN.Nodes.RosserSchoenfeld.v1.Challenge
+import IEANTN.Nodes.SMeansq.v1.Challenge
+import IEANTN.Nodes.SMeansq.v1.Examples
 import IEANTN.Nodes.Trudgian2011.v1.Challenge
 import IEANTN.Nodes.Wedeniwski.v1.Challenge
 import IEANTN.Nodes.ZeroCount.v1.Challenge
