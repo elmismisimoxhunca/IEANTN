@@ -59,12 +59,20 @@ decomposition and corridor are demanded on the closed window, which differs only
 
 The bound is deliberately not sharp: at `T ≈ 3·10^12`, `H = 10^4` the exhibited instantiation
 gives `y² ≈ 7.62` against Selberg's asymptotic `≈ 0.17`, i.e. the point is explicitness and
-moderate height, not sharpness. -/
+moderate height, not sharpness.
+
+**Integrability is part of the statement, on purpose.** Mathlib totalizes the Bochner integral
+of nonintegrable functions to `0`; without integrability hypotheses the moment premises could be
+satisfied vacuously (e.g. `D t = 1/(t - T)`, square-integral divergent in reality, `0` as a Lean
+integral) while the conclusion is false. `D²` and `|R|` are therefore required to be integrable
+on the window, which is exactly what the proof consumes via Cauchy–Schwarz. -/
 def assembly : Prop :=
   ∀ (T H Ω d1 r1 : ℝ) (D R : ℝ → ℝ),
     0 < H → 0 ≤ Ω → 0 ≤ d1 → 0 ≤ r1 →
     (∀ t ∈ Set.Icc T (T + H), π * zetaS t = -(D t) - (R t)) →
     (∀ t ∈ Set.Icc T (T + H), |zetaS t| ≤ Ω) →
+    MeasureTheory.IntegrableOn (fun t => (D t) ^ 2) (Set.Ioc T (T + H)) →
+    MeasureTheory.IntegrableOn (fun t => |R t|) (Set.Ioc T (T + H)) →
     (∫ t in Set.Ioc T (T + H), (D t) ^ 2) ≤ d1 * H →
     (∫ t in Set.Ioc T (T + H), |R t|) ≤ r1 * H →
     (∫ t in Set.Ioc T (T + H), (zetaS t) ^ 2) ≤
