@@ -15,6 +15,8 @@ instantiates the assembly at a symbolic window and reads off the shape of the co
 
 namespace SMeansq.v1.Examples
 
+open Real
+
 /-- On any window where the decomposition, corridor and moment bounds hold, the mean square of
 `S` over the window is at most `y^2 * H`. This is the statement a consumer of the node would use:
 bound the two moment inputs and the corridor, and the window estimate falls out. -/
@@ -38,8 +40,8 @@ example (h : SMeansq.v1.assembly)
     (hH : 0 < H)
     (hdec : ∀ t ∈ Set.Icc T (T + H), π * IEANTN.zetaS t = -(D t) - (R t))
     (hcor : ∀ t ∈ Set.Icc T (T + H), |IEANTN.zetaS t| ≤ 0)
-    (hD : (∫ t in Set.Ioc T (T + H), (D t) ^ 2) ≤ 0)
-    (hR : (∫ t in Set.Ioc T (T + H), |R t|) ≤ 0) :
+    (hD : (∫ t in Set.Ioc T (T + H), (D t) ^ 2) ≤ 0 * H)
+    (hR : (∫ t in Set.Ioc T (T + H), |R t|) ≤ 0 * H) :
     (∫ t in Set.Ioc T (T + H), (IEANTN.zetaS t) ^ 2) ≤ 0 := by
   have := h T H 0 0 0 D R hH (le_refl _) (le_refl _) (le_refl _) hdec hcor hD hR
   simpa using this
