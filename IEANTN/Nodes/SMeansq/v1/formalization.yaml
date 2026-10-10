@@ -106,15 +106,18 @@ limitations:
   supply. The first draft's claim that the proof was "plumbing" was wrong: without the
   integrability hypotheses the statement was false (vacuous moment premises), repaired 2026-10-10.
 - >-
-  INSTANTIATION GAP (referee fatal issue 2, open): the campaign exhibit's unconditional
-  instantiation applies the critical-line kernel Phi to ALL far zeros, but zeros beyond the
-  RH-verified height (3,000,175,332,800 per Platt-Trudgian) may sit off the line, where the
-  integrated kernel is Psi_a with a beta-dependent coefficient (crude universal bound
-  (sqrt x + x/2)/tau^2 instead of B/tau^2, about 31x larger at x = 67). The exhibit's headline
-  table reproduces independently to ~1e-4 relative (referee recomputation), but the unconditional
-  upper-bound proof is incomplete until the off-line tail is priced and re-run. Repair path is
-  identified; until then the instantiation is NOT certified and this node asserts only the
-  conditional assembly.
+  INSTANTIATION STATUS (repaired 2026-10-10; sharp constants still uncertified): the referee's
+  fatal issue 2 (off-line kernel Psi_a for zeros beyond the RH-verified height 3,000,175,332,800)
+  and majors 3-4 (negative-zero distance, pole/trivial-zero pricing, H-domain) were repaired by an
+  independent Astra pass: every remainder term is now a nonnegative additive allowance in r1
+  (nine terms, no implicit absorption), with a rigorous RvM tail lemma. Delta across the 24-row
+  range: <= 8.36e-7 in r1; headline B_ms/H becomes 7.616504965213 (+1.36e-7). The sharp-decimal
+  theorem STILL waits on two open certificates (norm(Phi)_1 <= 2.74688 and sup tau^2 |Phi| <=
+  1.32803); a fully unconditional same-shape fallback with analytically proved coarser constants
+  (L = 4.746, B = 3/2) gives a uniform-in-T bound 12.292 for H = 10^4 over the whole domain, so
+  the n = 13 sawtooth retirement (needs < 169/12 = 14.0833) survives even without the
+  certificates. Repair: campaign-results/F039-IEANTN/REPAIR/ (REPAIR.md, rerun.py, RESULTS.md);
+  headline numbers independently reproduced by the parent to 12 significant figures.
 - >-
   The three analytic inputs are hypotheses, not nodes: (1) the Selberg smoothed-formula
   decomposition pi * S t = -(D t) - (R t); (2) the Beurling-Selberg majorant diagonalization
