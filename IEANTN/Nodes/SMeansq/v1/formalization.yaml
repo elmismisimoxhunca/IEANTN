@@ -97,11 +97,11 @@ review:
 
 limitations:
 - >-
-  No Lean proof yet: the conclusion is a challenge awaiting a solution. The proof is
-  Cauchy-Schwarz plus the quadratic formula; the required inputs (measurability of zetaS,
-  integrability of the windows' D^2 and |R|) are exactly what the future decomposition node must
-  supply. The first draft's claim that the proof was "plumbing" was wrong: without the
-  integrability hypotheses the statement was false (vacuous moment premises), repaired 2026-10-10.
+  The proof is elementary but the hypotheses are load-bearing: the first draft's claim that the
+  proof was "plumbing" was wrong -- without the integrability hypotheses the statement was false
+  (vacuous moment premises via Mathlib's totalization of nonintegrable functions), repaired
+  2026-10-10 (IntegrableOn of D^2 and |R| required). The future decomposition node must supply
+  inputs satisfying these hypotheses; the solution needs no measurability fact about zetaS itself.
 - >-
   INSTANTIATION STATUS (repaired 2026-10-10; sharp constants still uncertified): the referee's
   fatal issue 2 (off-line kernel Psi_a for zeros beyond the RH-verified height 3,000,175,332,800)
