@@ -1,0 +1,118 @@
+# Node metadata for `SMeansq.v1`.  See docs/NODES.md.
+version: "v0.4"
+
+node:
+  id: SMeansq.v1
+  family: SMeansq
+  version: v1
+  kind: pipeline
+  status: active
+
+project:
+  name: "SMeansq.v1"
+  description: >-
+    A pipeline node carrying a pointwise corridor for the zeta argument function S and two window
+    moment bounds (mean square of the smoothed prime polynomial D, first moment of the remainder R)
+    to an explicit short-interval mean-square bound: the integral of S(t)^2 over [T, T+H] is at
+    most y^2 * H with y = (sqrt(d1) + sqrt(d1 + 4 pi Omega r1)) / (2 pi). The route is first-moment
+    only: no pair-correlation input is consumed anywhere, which is what lets the bound reach
+    moderate heights (the exhibited instantiation covers 1e6 <= T, T + H <= 3e12 - 1, H down to
+    1e4). Every conclusion imports nothing: the decomposition, the majorant diagonalization and the
+    zero-count input all arrive as hypotheses, so the node sits downstream of nodes supplying them
+    rather than reproving them.
+  authors: ["Sebastian Rodrigo"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Sebastian Rodrigo"]
+
+repository:
+  role: substantive-development
+
+classification:
+  arxiv: [math.NT]
+  msc2020: ["11M26", "11N05"]
+
+conclusions:
+- id: assembly
+  declaration: SMeansq.v1.assembly
+  challenge: SMeansq.v1.challenge_assembly
+  imports: []
+  imports_status: none
+  justifications:
+  - id: solution
+    kind: none-yet
+    note: >-
+      Not yet proved in Lean. The proof is a Cauchy-Schwarz-plus-quadratic-formula argument on the
+      window integrals (pi u^2 <= u sqrt(d1 H) + Omega r1 H for u = sqrt of the left side); the
+      expected work is measurability/integrability plumbing for zetaS, D and R, not analysis.
+      Designated follow-ups will supply the hypotheses as nodes of their own.
+  designated: solution
+
+sources:
+- title: "msq_s: explicit mean-square bound on S(t), moderate heights"
+  authors: ["Sebastian Rodrigo"]
+  type: other
+  id: "campaign exhibit msq_s (2026-08-20, with 2026-08-20 erratum)"
+  relationship: formalizes
+  note: >-
+    Original derivation by the contributor, machine-checked numerically and independently
+    prosecuted; NOT a transcription of a published theorem. The erratum's corrected constants
+    apply: B = 1.32803 (sup of tau^2 |Phi|; the exhibit's first value 1.327426 was false as a
+    global supremum) and norm(Phi)_1 <= 2.74688 (rounded up from a value disputed at the fifth
+    decimal between two computations). In this node those constants enter only through the d1 and
+    r1 hypotheses and are not asserted here.
+- title: "An improved upper bound for the argument of the Riemann zeta-function on the critical line II"
+  authors: ["Timothy S. Trudgian"]
+  type: paper
+  id: "J. Number Theory 134 (2014), 280-292; arXiv:1208.5846"
+  relationship: input
+  note: >-
+    Source of the pointwise corridor shape Omega(T) = 0.111 log T + 0.275 log log T + 2.450 used
+    when instantiating the hypotheses; the corridor itself enters this node only as the hypothesis
+    |S t| <= Omega. A candidate follow-up stub node (mirroring Trudgian2011.v1) would state it.
+- title: "Some extremal functions in Fourier analysis"
+  authors: ["J. D. Vaaler"]
+  type: paper
+  id: "Bull. AMS 12 (1985), 183-216"
+  relationship: input
+  note: >-
+    The Beurling-Selberg extremal majorant behind the D-mean-square bound (annihilation of every
+    off-diagonal frequency). Not needed for this node's statement; needed for the future node that
+    will supply d1.
+
+automation:
+  methods:
+  - method: ai-assisted
+    role: >-
+      Statement drafting and Lean scaffolding, reviewed by the contributor before commit.
+
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Original research contributed from outside; no reviewer has yet checked the statement against
+    the mathematics it models. The derivation's numerical table and its two independent
+    prosecutions are recorded in the campaign exhibit, not here.
+
+limitations:
+- >-
+  No Lean proof yet: the conclusion is a challenge awaiting a solution. The expected proof is
+  elementary (Cauchy-Schwarz and the quadratic formula); the plumbing is measurability of zetaS.
+- >-
+  The three analytic inputs are hypotheses, not nodes: (1) the Selberg smoothed-formula
+  decomposition pi * S t = -(D t) - (R t); (2) the Beurling-Selberg majorant diagonalization
+  giving d1 <= (1/2)(1 + 2 pi x^2/H) * V(x); (3) the first-moment zero count giving r1. Each is a
+  candidate follow-up node; none exists in the network yet.
+- >-
+  No priority is claimed. The exact statement (unconditional, unweighted, explicit, short
+  intervals, moderate heights) was not located in the literature checked (Titchmarsh's record of
+  Selberg's asymptotic; Chan 2004 conditional short-interval asymptotic; Simonic-Trudgian-
+  Turnage-Butterbaugh 2022 explicit increment moments), but Selberg's original paper and other
+  primary sources were not exhaustively checked, and absence from a search is not firstness.
+- >-
+  The bound is far above the truth: 21.7x to 44.8x Selberg's asymptotic mean square across the
+  exhibited range. Its content is explicitness at moderate height, not sharpness.
+- >-
+  The exhibited instantiation of the hypotheses is zeta-specific and height-limited: it consumes
+  RH verified to 3e12 (Platt-Trudgian 2021) and Trudgian 2014's corridor. Beyond the verified
+  range the method's floor degenerates to the trivial Omega^2 bound. The chi_{-3} analogue
+  inherits a much smaller verified range (3.33e7).
