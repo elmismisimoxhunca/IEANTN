@@ -80,7 +80,7 @@ automation:
   methods:
   - method: ai-assisted
     role: >-
-      Statement drafting and Lean scaffolding, reviewed by the contributor before commit.
+      Statement drafting, Lean proof development, and scaffolding, reviewed by the contributor before commit.
 
 review:
   status: self-assessed
@@ -109,17 +109,14 @@ limitations:
   independent Astra pass: every remainder term is now a nonnegative additive allowance in r1
   (nine terms, no implicit absorption), with a rigorous RvM tail lemma. Delta across the 24-row
   range: <= 8.36e-7 in r1; headline B_ms/H becomes 7.616504965213 (+1.36e-7). The sharp-decimal
-  theorem STILL waits on two open certificates (norm(Phi)_1 <= 2.74688 and sup tau^2 |Phi| <=
-  1.32803); a fully unconditional same-shape fallback with analytically proved coarser constants
-  (L = 4.746, B = 3/2) gives a uniform-in-T bound 12.292 for H = 10^4 over the whole domain, so
-  the n = 13 sawtooth retirement (needs < 169/12 = 14.0833) survives even without the
-  certificates. Repair: campaign-results/F039-IEANTN/REPAIR/ (REPAIR.md, rerun.py, RESULTS.md);
-  headline numbers independently reproduced by the parent to 12 significant figures. The two
-  kernel constants are now certified by rigorous interval arithmetic with proven analytic tails
-  (campaign-results/F039-IEANTN/CERT/): norm(Phi)_1 in [2.74687402574, 2.74687468434] <= 2.74688
-  and B in [1.32802243655788..., 1.32802243655788...] <= 1.32803, argmax tau in
-  [14.72899141975465946682, 14.72899141975465946683]; verifier rerun green by the parent. The
-  sharp-decimal headline is therefore unconditional end to end.
+  Historical certificate debt, now discharged: norm(Phi)_1 and sup tau^2 |Phi| were open when
+  the repair was written. They are certified (campaign-results/F039-IEANTN/CERT/):
+  norm(Phi)_1 in [2.74687402574, 2.74687468434] <= 2.74688 and B in
+  [1.32802243655788..., 1.32802243655788...] <= 1.32803. The repaired instantiation therefore
+  satisfies B_ms/H <= 7.616504965214 at the hardest verified window. A fully unconditional
+  same-shape fallback with coarser constants (L = 4.746, B = 3/2) gives a uniform-in-T bound
+  12.292 for H = 10^4 on the verified domain, so the n = 13 retirement (needs < 169/12) does
+  not depend on those certificates. These numbers are not Lean theorems.
 - >-
   The three analytic inputs are hypotheses, not nodes: (1) the Selberg smoothed-formula
   decomposition pi * S t = -(D t) - (R t); (2) the Beurling-Selberg majorant diagonalization

@@ -17,13 +17,12 @@ short-interval mean-square bound on the zeta argument function `S`:
 where `d1` bounds the mean square of the smoothed-prime polynomial `D` on the window, `r1` bounds
 the first moment of the remainder `R`, and `Ω` is a pointwise bound for `|S|` on the window.
 
-The argument is the first-moment route of Selberg's smoothed explicit formula: if
-`π * S t = -(D t) - (R t)` on the window, then with `u = √(∫ S²)`,
-
-`π u² = |∫ S D + ∫ S R| ≤ √(∫ S²) √(∫ D²) + Ω ∫ |R| ≤ u √(d1 H) + Ω r1 H`,
-
-and the quadratic `π w² - √d1 w - Ω r1 ≤ 0` (for `u = w√H`) solves to `w ≤ y`. No pair-correlation
-input is used anywhere: the remainder is controlled in *first* moment only, which is why the bound
+The argument is the first-moment route of Selberg's smoothed explicit formula. The Lean proof
+does not integrate the signed identity `π S² = -S D - S R`: `IntegrableOn (D^2)` makes `|D|`
+measurable, not `D`. It integrates the pointwise bound `π S² ≤ |S| |D| + Ω |R|` and applies
+Hölder with `p = q = 2`. With `u = √(∫ S²)` this gives `π u² ≤ u √(d1 H) + Ω r1 H`, and the
+quadratic `π w² - √d1 w - Ω r1 ≤ 0` (for `u = w√H`) solves to `w ≤ y`. No pair-correlation input
+is used anywhere: the remainder is controlled in *first* moment only, which is why the bound
 reaches moderate heights rather than the very large heights explicit moment estimates need when
 they take a genuine second moment of the remainder.
 
